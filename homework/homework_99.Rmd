@@ -1,0 +1,58 @@
+---
+title: "Homework 99"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+
+
+
+
+A file to test if downloading homework is working correctly
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+<!-- This R chunk sets some parameters that will be used in the rest of the document. Please ignore it and do not modify it. -->
+```{r message=FALSE, warning=FALSE, tidy=TRUE, echo = FALSE}
+    library(knitr)
+    opts_chunk$set(tidy.opts=list(width.cutoff=60)) 
+    set.seed(1)  # set the random number generator to always give the same sequence of random numbers
+```
+
+
+
+
+
+
+
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+ 
+    
+    
+```
+
+
+
+  
+  
+
+
+
+
+
+
+
+
