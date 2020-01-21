@@ -1,0 +1,284 @@
+---
+title: "Homework 1"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+
+$\\$
+
+
+
+
+The purpose of this homework is to review concepts that we covered in class and to practice some basic analyses in R. Please submit a compiled pdf with your answers to Gradescope by 11:30pm on Sunday, January 26th. 
+
+I highly recommend getting started on this homework early since this is the first homework and you could run into some difficulties on it. This homework is out of 70 points and has been intentionally kept short since it is the first homework (future homeworks will likely be a little longer).  Some functions you will find useful to complete the worksheet are: sqrt(), c(), sum(), table(), and prop.table(), bar() and pie(). You will also use the get_sprinkle_sample() function that I wrote. 
+
+For full credit, be sure to print out all your answers for your calculations in the R chunks by putting objects that contain results on a line by themselves which causes them to be printed in the R Markdown output. However, only print out meaningful results, and do not print out pages of data!
+
+If you need help with any of the homework assignments, please attend the TA office hours which are listed on Canvas and/or ask questions on [Piazza](https://piazza.com/class/k52xi66z6yv5ns). Also, if you have completed the homework, please help others out by answering questions on Piazza. Finally, if you have conceptual questions, reviewing the class slides will be helpful. 
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+<!-- This R chunk sets some parameters that will be used in the rest of the document. Please ignore it and do not modify it. -->
+```{r message=FALSE, warning=FALSE, tidy=TRUE, echo = FALSE}
+    
+library(knitr)
+
+opts_chunk$set(tidy.opts=list(width.cutoff=60)) 
+    
+ # set the random number generator to always give the same sequence of random numbers
+set.seed(1) 
+    
+
+# if you are running R Studio on your personal computer, you can run the lines 
+# below to install the ClassTools package
+# install.packages('devtools')
+# devtools::install_github("emeyers/ClassTools", force = TRUE)
+
+library(ClassTools)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+# Part 1:  Conceptual questions
+
+
+Please answer the following questions to make sure you understand the concepts covered in class. We will build on these concepts over the course of the semester so it is important you have a solid understanding now. Note: some symbols that might be useful for answer the questions include $\hat{p}$, $\bar{x}$, $\pi$, and $\mu$. 
+
+
+
+
+$\\$
+
+
+
+
+
+## Quesiton 1.1: Please define the following terms (24 points)
+
+In class we discussed to types of numbers: 1) *parameters* and 2) *statistics*. Please describe: 
+
+1. Which type of number is associated with a sample and which is associated with a population?  (parameter or statistic?)
+2. Which type of number is associated with Plato and which with the shadows?
+3. Which type of number are we most interested in to get at the Truth? 
+4. Which type of number is associated with a categorical distribution and which is associated with a bar chart? 
+5. Which type of number varies depending on the particular sample of data collected?
+6. When discussing proportions, what is the symbol used to denote the parameter and which one is used to denote the statistic?
+
+
+
+**Answers**
+
+1.  
+2.  
+3.  
+4.  
+5. 
+6.  
+
+
+
+
+$\\$
+
+
+
+
+**Question 1.2 (8 points)**: Of all 1,547,990 students who took the SATs (Scholastic Aptitude Test), 1,114,273 were from a public high school. Use these numbers to calculate the proportion of students who were from public school and use the correct symbol to denote this proportion (hint: some possible symbols to use are: $\mu$, $\bar{x}$, $\pi$ and  $\hat{p}$). 
+
+**Answers:**  
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+# Part 2:  Practicing R
+
+
+Please answer the following questions to get practice using a few basic R functions. Make sure you have a clear understanding of how to use this code since future class work will build on this knowledge. 
+
+
+**Exercise 2.1: (4 points)** Let's get started by using R as a calculator. Use R to calculate the square root of 21.32, and then divide this number by 2.71. 
+```{r q21, message=FALSE, warning=FALSE, tidy=TRUE}
+
+    # delete the below lines and replace with the correct math
+    # (2 + 3)^2
+    
+    
+```
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 2.2: (6 points)** Create a vector with the numbers 7, 15, 18, 3, 5, 12, and 20 in it and assign this vector to an object called my_vec. Multiply this vector by 2 and assign it to the object my_vec2. Finally, use the sum() function to sum all the values in the vector my_vec2. 
+
+```{r q22, message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+    
+```
+
+
+
+
+
+$\\$
+
+
+
+
+
+**Exercise 2.3 (9 points)** The code below will use the `get_sprinkle_sample()` function to get a sample of n = 242 sprinkles and will save them in an object called `my_sample`. Use the table() function to convert this sample into a table that has the count of the number of sprinkles of each color and assign the result to an object called sprinkle_table. Below report how many sprinkles there are of the color that had the most sprinkles. Also answer the question, if another sample of sprinkles was taken, do you think the same color would have the most sprinkles? Try it and find out!
+
+
+```{r q23, message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+    my_sample <- get_sprinkle_sample(242)
+
+
+    # use the table() function to create a table that has the count of sprinkles of each color and assign the results to an object called sprinkle_table 
+
+    
+    
+    # getting a second sample and try it again
+    
+
+
+     
+
+```
+
+
+
+** Answer:** [Which color had the most sprinkles and how many sprinkles were of that color? Also try this a second time and report how many sprinkles were in the category with the most sprinkles]. 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+
+**Exercise 2.4 (6 points)** Now use the function prop.table() to convert the counts of sprinkle colors in sprinkle_table into the proportion of sprinkles of each color. Save the results to an object called sprinkle_proportions. Report the proportion of pink sprinkles.
+```{r q24, message=FALSE, warning=FALSE, tidy=TRUE}
+    
+
+
+
+```
+
+$\\$
+
+
+
+**Answer:** [Report the proportion of sprinkles that were pink.]  
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 2.5 (12 points)** Above we created samples that had n = 242 sprinkles. Now repeat the process several times by calculating the proportion of red sprinkles ($\hat{p}_{red}$) using sample sizes of n = 1, 10, 100, 1,000, and 10,000, and 100,000; i.e., use the functions get_sprinke_sample(), table(), prop.table() etc. once for each sample size. Do the estimates of the proportion of red sprinkles ($\hat{p}_{red}$) change a lot depending on the sample size n?  Which sample size (n) seems to give you the most accurate estimate? 
+```{r q25, message=FALSE, warning=FALSE, tidy=TRUE}
+
+    
+# get proportion of red sprinkles for a sample of size 1
+
+
+
+# repeat for sample of size 10, 100, etc.
+
+
+
+```
+
+
+
+$\\$
+
+
+
+**Answer:** 
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+
+## Reflection (5 points)
+
+Do you feel confident in these concepts and with R? Please reflect on how the homework went by going to Canvas, going to the Quizzes link, and clicking on [Reflection on homework 1](https://yale.instructure.com/courses/55573/quizzes/21857)
+
+
+
+
+
+
