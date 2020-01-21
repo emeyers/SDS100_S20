@@ -13,7 +13,7 @@ $\\$
 
 The purpose of this homework is to review concepts that we covered in class and to practice some basic analyses in R. Please submit a compiled pdf with your answers to Gradescope by 11:30pm on Sunday, January 26th. 
 
-I highly recommend getting started on this homework early since this is the first homework and you could run into some difficulties on it. This homework is out of 70 points and has been intentionally kept short since it is the first homework (future homeworks will likely be a little longer).  Some functions you will find useful to complete the worksheet are: sqrt(), c(), sum(), table(), and prop.table(), bar() and pie(). You will also use the get_sprinkle_sample() function that I wrote. 
+I highly recommend getting started on this homework early since this is the first homework and you could run into some difficulties on it. This homework is out of 75 points and has been intentionally kept short since it is the first homework (future homeworks will likely be a little longer).  Some functions you will find useful to complete the worksheet are: sqrt(), c(), sum(), table(), and prop.table(), bar() and pie(). You will also use the get_sprinkle_sample() function that I wrote. 
 
 For full credit, be sure to print out all your answers for your calculations in the R chunks by putting objects that contain results on a line by themselves which causes them to be printed in the R Markdown output. However, only print out meaningful results, and do not print out pages of data!
 
@@ -126,7 +126,7 @@ $\\$
 Please answer the following questions to get practice using a few basic R functions. Make sure you have a clear understanding of how to use this code since future class work will build on this knowledge. 
 
 
-**Exercise 2.1: (4 points)** Let's get started by using R as a calculator. Use R to calculate the square root of 21.32, and then divide this number by 2.71. 
+**Exercise 2.1: (5 points)** Let's get started by using R as a calculator. Use R to calculate the square root of 21.32, and then divide this number by 2.71. 
 ```{r q21, message=FALSE, warning=FALSE, tidy=TRUE}
 
     # delete the below lines and replace with the correct math
