@@ -1,0 +1,591 @@
+---
+title: "Homework 2"
+output:
+  pdf_document: default
+---
+
+
+
+
+$\\$
+
+
+
+
+
+
+In the following homework you will explore more descriptive statistics and visualizations of categorical and quantitative data. Please submit a compiled pdf with your answers to the exercises and Lock 5 questions to Gradescope *by 11:30pm on Sunday February 2nd*.
+
+Some useful functions for completing this worksheet are: dim(), length(), table(), prop.table(), barplot(), hist(), mean(), median(), max(), sd(), fivenum(), and boxplot(). You might also find the following symbols useful:  $\mu$, $\bar{x}$, $\pi$, $\hat{p}$
+
+If you need help with any of the homework assignments, please attend the TA office hours which are listed on Canvas and/or ask questions on [Piazza](https://piazza.com/class/k52xi66z6yv5ns). Also, if you have completed the homework, please help others out by answering questions on Piazza. Finally, if you have conceptual questions, reviewing the class slides will be helpful. 
+
+
+
+$\\$
+
+
+
+
+=============
+
+
+## Before getting started
+
+
+If you have downloaded R Studio and are doing this homework on your own computer (i.e., not using R Studio Cloud), then before you start on this homework you will need to update the ClassTools package. To do this, just knit the document to pdf. Once you knit the document to a pdf **one time** your code will have updated, so please then go ahead and delete the text and the code in this "Before you begin section" (i.e,. delete everything between rows of equal signs, including this text). Your code will now be updated and you will not need to run this again (note, if you don't delete this section, the homework should still work, but there will be a bunch of meaningless text at the top of your homework and it will take longer for your code to knit each time you run it). 
+
+
+```{r update_ClassTools}
+
+install.packages('carData')
+install.packages('Lahman')
+
+library(ClassTools)
+reinstall_class_package()
+detach("package:ClassTools", unload=TRUE)
+
+library(ClassTools)
+get_ClassTools_version()
+download_image("beta_carotene.png")
+
+download.file("https://yale.box.com/shared/static/ey6ahs284lhoye1hgqloe44aqbb2h0qd.rda", "cars_small.Rda")
+
+```
+
+============
+
+
+
+
+
+<!-- This R chunk sets some parameters that will be used in the rest of the document. Please ignore it and do not modify it. -->
+```{r message=FALSE, warning=FALSE, tidy=TRUE, echo=FALSE}
+    
+
+  library(knitr)
+  # makes sure the code is wrapped to fit when it creats a pdf
+  opts_chunk$set(tidy.opts=list(width.cutoff=60))   
+  
+
+  # download some images needed for this homework
+  library(ClassTools)
+
+    
+```
+
+
+
+
+$\\$
+
+
+
+
+
+
+# Part 1:  Lock 5 questions
+
+Please answer the following questions taken from the Lock5 textbook. Some symbols that might be useful for answering these questions include $\hat{p}$, $\bar{x}$, $\pi$, and $\mu$. 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+**Exercise 1.1 (9 points)**:  A set of lucky numbers are: 41, 53, 38, 32, 115, 47, and 50. For these lucky numbers find: a) the mean  $\bar{x}$, b) the median m, and c) indicate whether there appear to be any outliers and if so, what they are. 
+
+
+
+
+**Answers:**  
+
+
+(a) 
+
+(b) 
+
+(c) 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+**Exercise 1.2 (9 points)**:  The plasma beta-carotene level (concentration of beta-carotene in the blood), in ng/ml was measured for a sample of n = 315 individuals. A histogram of this sample is shown in figure 2.15. Please a) Describe the shape of this distribution and if there are any obvious outliers. b) Estimate the median of this sample, c) estimate the mean of this sample. 
+
+
+![concentration of beta-carotene in blood](beta_carotene.png)
+
+
+
+
+**Answers:**  
+
+
+(a) 
+
+(b) 
+
+(c) 
+  
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+**Exercise 1.3 (6 points)**: Using only the whole numbers 1 through 9 as possible data values, create a dataset with n = 6, and $\bar{x}$ = 5 with: 
+
+a) The standard deviation as small as possible
+
+b) The standard deviation as large as possible
+
+
+
+**Answers:**  
+
+a)
+
+b) 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+**Exercise 1.4 (8 points)**: The number of days it took 8 different rowers to row solo across the Atlantic Ocean is: 40, 87, 78, 106, 67, 70, 153, and 81. Use the R chunk below to calculate the z-score for the shortest and longest row times and interpret what these values tell us in terms of the mean and standard deviation of the sample. 
+
+Hint: it will be useful to create objects that hold intermediate values before calculating your final answers. For example, start by creating a vector called `row_times` that has the times for the different rowers. Then create objects called `mean_time` and `sd_time` which have the mean and standard deviations of rowers' times. Finally, calculate the z-scores for the shortest and longest row times. 
+
+
+```{r row_times}
+
+
+
+
+
+
+
+```
+
+
+
+**Answer**: 
+
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+
+# Part 2: Analyzing categorical data from cars sold on Edmunds.com
+
+
+Let's get practice analyzing data in R by examining information about cars that were sold on [Edmunds.com](http://edmunds.com) which is a website that helps people shop for cars. This data was used in the 2015 [DataFest](http://www.science.smith.edu/datafest/). Edmunds has made this data available for education purposes only, so please do not distribute this data. 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 2.1 (5 points):** The code below loads data on 5 different brands of cars (Toyota Corollas, Subaru Imprezas, Honda Civics, Hyundai Elantras and the Mazda 3's) in a data frame called `car_data`. 
+
+The dim() function in R works on a data frame and returns the number of rows and columns in the data frame. Use the dim() function on the `car_data` data frame and report how many cases are in the data frame. Next, report what the variables are and whether the variables are categorical or quantitative. Lastly, report what the population for this data is.
+
+Hint: to view the data frame you can load the data on the console and then use the View() on the console as well. Remember that you can't use the View() function in an R Markdown document and also that your R Markdown document does not have access to the objects in your R environment. Instead, R can only access objects that are created inside the R Markdown document itself. 
+
+
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+    
+
+# load the car data (don't change this line)
+load("cars_small.Rda")
+
+
+
+
+
+```
+
+
+**Answer:** 
+
+
+
+
+
+
+   
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 2.2 (5 points):** Let's now get a little more practice exploring categorical data. Let's start by extracting a vector that has the names of the car brands for each car sold and assigning this data to an object called `brands` (hint use the $ symbol). Then use the table() function on the brands vector to create a count of the number of different cars sold for each brand and assign the results to an object called `brand_counts`. Report which car brand sold the most cars.
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+**Exercise 2.3 (5 points):** Now get the relative frequencies  of how much each car brand sold from the `brand_counts` table.  What proportion of cars listed were from the brand that sold the most cars?  Which brand has the second most cars sold? 
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+```
+
+
+**Answer:** 
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 2.4 (5 points):** Next create a bar chart of the brand counts. Suppose we had a new data set collected 2 years later, do you think the proportion of cars sold by the top selling brand would change? Why or why not?  
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+```
+
+**Answers:**  
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+
+# Part 3: Analyzing quantitative data from cars sold on Edmunds.com
+
+
+$\\$
+
+
+
+In the next exercises we will analyze some quantitative data by examining the prices of Subaru Imprezas, Toyota Corollas and Mazda 3's. 
+
+
+
+
+
+$\\$
+
+
+
+**Exercise 3.1 (5 points)**: The code below creates a vector called `subaru_prices`, which contains the prices for the Subaru Imprezas that were sold. Use the length() function to get the sample size *n* and verify that the number of Subarus in this vector matches the number that you found when you ran the table() function above.  
+
+Note: the length() function tells you how many elements are in a *vector* while the dim() function tells you how many rows and columns are in a *data frame*. Since we are finding the number of elements in a vector, we are using the length() function here.  
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+# This line gets a vector of only the Subaru prices (do no change it)
+subaru_prices <- subset(car_data$price, car_data$brand == "Subaru")
+
+
+
+
+
+
+```
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+**Exercise 3.2 (6 points):** Now use the mean() and median() functions on the subaru_prices. Is the mean or the median higher?  Does this indicate that the data is left or right skewed? 
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+
+```
+
+
+**Answers:** 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+**Exercise 3.3 (6 points):** Next use the hist(my_vector, breaks) function to create a histogram of the prices for the Subarus. Try using different values for the breaks argument to create different number of bins in the histogram and be sure to label your axes appropriately. Then describe the shape of the data, and whether there seem to be any noticable outliers. 
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+```
+
+
+**Answers:** 
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+**Exercise 3.4 (6 points):** Let's now compare the Subarbu prices to the prices of Toyta Corollas and Mazda 3's. The code below creates vectors of prices called `mazda_prices` and `toyota_prices`. Start by reporting the samples sizes for these two types of cars. Then create histograms to get a sense of how the Mazda and Toyta car prices are distributed (and again choose a reasonable number of bins) and describe the shape of these distributions. 
+
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+    
+
+# do no change the lines below 
+mazda_prices <- subset(car_data$price, car_data$brand == "Mazda")
+toyota_prices <- subset(car_data$price, car_data$brand == "Toyota")
+
+
+
+
+
+
+```
+
+
+**Answer:** 
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+**Exercise 3.5 (7 points):** Now create side-by-side boxplots comparing the prices of Subarbus, Mazdas and Toyotas, and as always label the axes appropriately. Which brand of car has the highest median price and which type of car has more variability as measured by the inter-quartile range? 
+
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+
+```
+
+
+
+**Answers:** 
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+
+
+**Exercise 3.6 (6 points):** Now calculate the mean and standard deviation of the prices for all three brands. Report which brand has the highest mean and which brand has the largest standard deviation. 
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+```
+
+
+**Answers:** 
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+**Exercise 3.7 (7 points):**  Finally, report the range of values that approximately 95% of the Mazdas prices would be in if it was the case that the Mazda prices were normally (bell-shaped) distributed. Then calculate the actual 2.5th and 97.5th percentile for the Mazda prices (which captures the end points such that 95% of the data is between these numbers). Are the numbers found using the percentiles close to what you calculated based on assuming the prices had a normal distribution? 
+
+```{r message=FALSE, warning=FALSE, tidy=TRUE}
+
+
+
+
+
+```
+
+
+**Answers:**  
+
+
+
+
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+## Reflection (5 points)
+
+
+Please reflect on how the homework went by going to Canvas, going to the Quizzes link, and clicking on [Reflection on homework 2](https://yale.instructure.com/courses/55573/quizzes/21922)
+
+
+
+
+
+
+
