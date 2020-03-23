@@ -277,7 +277,7 @@ c)	Is the evidence convincing that low pH causes the average mercury level in fi
 
 
 
-![Figure 4.26](/home/shared/intro_stats/images/Lock5_4_26.png)
+![Figure 4.26](Lock5_4_26.png)
 
 
 
@@ -318,7 +318,7 @@ In 1969, the United States Selective Service conducted a lottery to decide which
 If the draft was completely fair, there should be no correlation between the draft number and the date someone was born. In the following set of exercises we will use hypothesis testing to assess whether there was indeed no correlation.
 
 
-![Draft Lottery Image](/home/shared/intro_stats/images/drawing.jpg)
+![Draft Lottery Image](1969_draft_lottery_photo.jpg)
 
 
 
