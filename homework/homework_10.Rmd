@@ -305,7 +305,8 @@ Next calculate the $\chi^2$ statistic using the R chunk below. One way you can d
 
 
 
-**Answers** The filled out expected counts are below. The degrees of freedom for a chi-squared test of association are (r - 1) * (c - 1), where r is the number of rows and c is the number of columns. In this `example we have 4 rows and 2 columns, so our degrees of freedom are 3. 
+**Answers** 
+
 
 
 The expected count table: 
